@@ -6,8 +6,11 @@ Puedes usar los siguientes comandos para realizarlo:
 
 python -m venv venv
 
+
 source venv/bin/activate  # En sistemas UNIX
+
 venv\Scripts\activate  # En sistemas Windows
+
 
 pip install Flask
 
@@ -26,13 +29,7 @@ def modificarValorDiccionario(diccio, clave, nuevo_valor):
     else:
         return False
 
-def show_diccionario(diccionario):
-    for clave, valor in diccionario.items():
-        print(f"{clave}: {valor}")
-    return diccionario
-
-#http://localhost:5000/dict/{"uno": "1", "dos": "2", "tres": "3"}
 ```
-a
+Utilizamos json para cargar el diccionario que obtenemos de la URL que da el usuario y despues simplemente hacemos las operaciones que necesitemos con el mismo.
 
 
