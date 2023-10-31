@@ -14,7 +14,7 @@ venv\Scripts\activate  # En sistemas Windows
 
 pip install Flask
 
-Para implementar el uso de parametros en la ruta tenemos que hacer lo siguiente:
+Para implementar el uso de diccionarios como un parametro en la ruta tenemos que hacer lo siguiente:
 
 ```python
 from flask import Flask, json
@@ -30,6 +30,25 @@ def modificarValorDiccionario(diccio, clave, nuevo_valor):
         return False
 
 ```
-Utilizamos json para cargar el diccionario que obtenemos de la URL que da el usuario y despues simplemente hacemos las operaciones que necesitemos con el mismo.
+Utilizamos json para cargar el diccionario que obtenemos de la URL que da el usuario y después simplemente hacemos las operaciones que necesitemos con el mismo.
+
+
+Para implementar el uso de conjuntos como un parámetro en la ruta tenemos que hacer lo siguiente:
+
+```python
+from flask import Flask, jsonify
+
+app = Flask(__name__)
+
+@app.route('/conjunto/<conjunto_param1>/<conjunto_param2>/')
+def diferenciaConjuntos(conjunto_param1, conjunto_param2):
+    conjunto1 = set(conjunto_param1.split(','))
+    conjunto2 = set(conjunto_param2.split(','))
+    
+    diferenciaConjuntos = conjunto1.difference(conjunto2)
+
+    return jsonify(list(diferenciaConjuntos))
+```
+Lo que cambia a comparación con los diccionarios es que ya no usamos el json, sino que lo declaramos con el set y para mostrar el conjunto debemos utilizar el jsonify.
 
 
