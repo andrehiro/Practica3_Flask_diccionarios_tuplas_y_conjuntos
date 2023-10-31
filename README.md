@@ -52,3 +52,20 @@ def diferenciaConjuntos(conjunto_param1, conjunto_param2):
 Lo que cambia a comparación con los diccionarios es que ya no usamos el json, sino que lo declaramos con el set y para mostrar el conjunto debemos utilizar el jsonify.
 
 
+Para implementar el uso de tuplas como un parámetro en la ruta tenemos que hacer lo siguiente:
+
+```python
+from flask import Flask, jsonify
+
+app = Flask(__name__)
+
+@app.route('/tupla/<tupla_param1>/<tupla_param2>/')
+def concatenarTuplas(tupla_param1, tupla_param2):
+    tupla1 = tuple(tupla_param1.split(','))
+    tupla2 = tuple(tupla_param2.split(','))
+    
+    nueva_tupla = tupla1 + tupla2
+
+    return jsonify(nueva_tupla)
+```
+Las tuplas y los conjuntos utilizan prácticamente las mismas instrucciones, la única diferencia es que para declarar una tupla usas el tuple y no el set.
